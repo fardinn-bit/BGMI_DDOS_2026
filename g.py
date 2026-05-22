@@ -14,7 +14,7 @@ import subprocess
 
 loop = asyncio.get_event_loop()
 
-TOKEN = '7175088392:AAGFSE90CZV5u_5Jr104j0LfL_ljEqp2EvY' #Enter_Bot_Token_within_the_colons
+TOKEN = '7175088392:AAEdK3TyNeCqj8EbjtqW7x91UaFu-FqX16k' #Enter_Bot_Token_within_the_colons
 MONGO_URI = 'mongodb+srv://Bishal:Bishal@bishal.dffybpx.mongodb.net/?retryWrites=true&w=majority&appName=Bishal'
 FORWARD_CHANNEL_ID = -1001987596149   
 
@@ -77,8 +77,8 @@ def check_user_approval(user_id):
         return True
     return False
 
-def send_not_approved_message(chat_id):
-    bot.send_message(chat_id, "*YOU ARE NOT APPROVED*", parse_mode='Markdown')
+def send_are_approved_message(chat_id):
+    bot.send_message(chat_id, "*YOU ARE APPROVED*", parse_mode='Markdown')
 
 @bot.message_handler(commands=['approve', 'disapprove'])
 def approve_or_disapprove_user(message):
@@ -103,7 +103,7 @@ def approve_or_disapprove_user(message):
     if action == '/approve':
         if plan == 1:  # Instant Plan 🧡
             if users_collection.count_documents({"plan": 1}) >= 99:
-                bot.send_message(chat_id, "*Approval failed: Instant Plan 🧡 limit reached (99 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*Approval failed: Instant Plan 🧡 limit reached (999 users).*", parse_mode='Markdown')
                 return
         elif plan == 2:  # Instant++ Plan 💥
             if users_collection.count_documents({"plan": 2}) >= 499:
